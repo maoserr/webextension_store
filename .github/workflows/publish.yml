@@ -20,7 +20,7 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Set patch version to run number
-        run: npm pkg set 'version'='$MAJOR_VER.$MINOR_VER.${{ github.run_number }}'
+        run: npm pkg set 'version'="$MAJOR_VER.$MINOR_VER.${{ github.run_number }}"
       - name: Install modules
         run: npm ci
       - name: Build

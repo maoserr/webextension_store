@@ -16,7 +16,8 @@ jobs:
       - uses: actions/setup-node@v3
         if: github.ref == 'refs/heads/main'
         with:
-          node-version: 16
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Set patch version to run number
         run: npm pkg set 'version'="$MAJOR_VER.$MINOR_VER.${{ github.run_number }}"
       - name: Install modules

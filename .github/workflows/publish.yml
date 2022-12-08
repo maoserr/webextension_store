@@ -34,4 +34,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: v${{ env.$MAJOR_VER }}.${{ env.$MINOR_VER }}.${{ github.run_number }}
+          tag_name: v${{ env.MAJOR_VER }}.${{ env.MINOR_VER }}.${{ github.run_number }}

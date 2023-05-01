@@ -73,7 +73,7 @@ export class MozillaWebStore {
                 finished = true
                 break
             }
-            await new Promise(resolve => setTimeout(resolve, wait_interval*1000));
+            await new Promise(resolve => setTimeout(resolve, wait_interval * 1000));
             res = await this.checkPackage(uuid)
         }
         if (!finished) {
@@ -92,8 +92,8 @@ export class MozillaWebStore {
         const response = await fetch(
             `${this.rootURL}/api/v5/addons/upload/${uuid}/`,
             {
-                method:"GET",
-                headers:hdr
+                method: "GET",
+                headers: hdr
             }
         )
         const resp_body = await response.json()
@@ -109,16 +109,16 @@ export class MozillaWebStore {
      * @param uuid UUID of upload
      * @param srcfile (Optional) srcfile
      */
-    async createNewVersion(uuid:string, srcfile?: fs.ReadStream | string):Promise<any> {
+    async createNewVersion(uuid: string, srcfile?: fs.ReadStream | string): Promise<any> {
         const formData = new FormData()
-        if (srcfile && typeof(srcfile) === "string") {
+        if (srcfile && typeof (srcfile) === "string") {
             formData.append("source", fs.createReadStream(srcfile))
         } else if (srcfile) {
             formData.append("source", srcfile)
         } else {
-            formData.append("source","")
+            formData.append("source", "")
         }
-        formData.append("upload", uuid)
+        formData.append("upload", uuid);
         const hdr = await this.setHeaders();
         const res = await fetch(
             `${this.rootURL}/api/v5/addons/addon/${this.extensionId}/versions/`,
